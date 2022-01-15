@@ -8,7 +8,7 @@ Trang web cho phép người dùng tìm kiếm và đăng ký các khóa học c
 ## Cài đặt
 *yêu cài máy của bạn đã cài đặt python3*
 ```
-pip install Django Pillow mysqlclient django-ckeditor
+pip install Django Pillow mysqlclient django-ckeditor --user
 ```
 Mở mysql và tạo một cơ sở dữ liệu có tên là ***course_web*** nếu không muốn có thể thay đổi tên khác và bạn sẽ vào file **setting** tìm 
 ``` 
