@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="modal open"> 
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body">
+        <div class="authen--form authen--form--register">
+            <div class="authen--form__content">
+                <div class="authen--form__header">
+                    <h3 class="authen--form__header--sub"> Đăng ký</h3>
+                </div>
+                <form action="" method="POST">
+                        <div class="authen--form__form">
+                   
+                            {% csrf_token %}
+                            <div class="authen--form__form--infor form-user">
+                                <input type="text" name={{ form.username.html_name }} required  id="user" class="authen--form__form--login"  placeholder="Tên người dùng VD: mikami">
+                                    <span class="form-mess">{{form.username.errors}}</span>
+                            </div>
+
+                            <div class="authen--form__form--infor form-email">
+                                <input type="email" name={{ form.email.html_name }} required  id="email" class="authen--form__form--login"  placeholder="Địa chỉ email">
+                                <span class="form-mess">{{form.email.errors}}</span>
+                            </div>
+
+                            <div class="authen--form__form--infor form-password ">
+                                <input type="password" name={{ form.password1.html_name }} required id="password" class="authen--form__form--login" placeholder="Nhập mật khẩu">
+                                <span class="form-mess">{{form.password1.errors}}</span>
+                            </div>
+                            <div class="authen--form__form--infor form-oldPassword">
+                                <input type="password" name={{ form.password2.html_name }} required id="oldPassword" class="authen--form__form--login" placeholder="Nhập lại mật khẩu">
+                                <span class="form-mess">{{form.password2.errors}}</span>
+                            </div>
+                        </div>
+                        <div class="authen--form__control">
+                            <a href='/' class="btn btn--back">TRỞ LẠI</a>
+                            <button type="submit" class="btn btn--primary btn-register">ĐĂNG KÝ</button>
+                        </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+</div>
+{% endblock content %}

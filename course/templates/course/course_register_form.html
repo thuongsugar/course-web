@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}
+{{course.subject}}
+{% endblock title %}
+
+{% block content %}
+    <div style="display: flex">
+        <div class="gird_colum-7">
+            <div class="content__description__course">
+                <h1 class="content__description__course-header">{{course.subject}}</h1>
+                {{course.description|safe}}
+                <h2 class="content__description__course-content">Nội dung khóa học</h2>
+                {% if course.lesson_set.all|length == 0 %}
+                    <span class="content__description__course-item-content">Hiện chưa có bài học nào</span>
+                {% else %}
+
+                    <p id="statistical" class="content__description__course-statistical"></p>
+                    <div class="content__description__course-list">
+                        <ul>
+                            {% for lesson in course.lesson_set.all %}
+                                <li class="content__description__course-item">
+                                    <div class="content__description__course-item-play">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span class="content__description__course-item-number">{{forloop.counter}}.</span>
+                                        <span class="content__description__course-item-content">{{lesson.subject}}</span>
+                                    </div>
+                                    <div class="content__description__course-item-time">
+                                        <span id="lesson_time" data-id={{lesson.get_id_url}}>10:26</span>
+                                    </div>
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            
+        </div>
+        {% if course.lesson_set.all|length != 0 %}
+            <div class="gird_colum-3">
+                <div class="content__description__time">
+                    <!-- Video -->
+                    <iframe width="380" height="230" src="https://www.youtube.com/embed/VdLfHS0B98M"
+                        title="YouTube video player" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                        picture-in-picture" allowfullscreen></iframe>
+                    {% comment %} <a href="https://www.youtube.com/watch?v=0SJE9dYdpps&list=PL_-VfJajZj0VgpFpEVFzS5Z-lkXtBe-x5">
+                        <div class="content__description__time-video">
+        
+                            <img class="content__description__time-video-img" src="https://cdn.fullstack.edu.vn/f8-learning/courses/13/13.png" alt="">
+                            <i class="far fa-play-circle"></i>
+                            <span>Xem giới thiệu khóa học</span>
+                        </div>
+                    </a> {% endcomment %}
+                    {% if is_registed %}
+                    <span class="content__description__time-register">
+                        <a href="{% url 'course:learning' course.id %}">Đã đăng ký, học ngay</a>
+                    </span>
+                    {% else %}
+                    <span class="content__description__time-register">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <button>Đăng ký học</button>
+                        </form>
+                    </span>
+                    {% endif %}
+                    
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+<script>
+    document.querySelector('.page__content-slider-cover').setAttribute('style','display:none')
+    listTimeEl = document.querySelectorAll('#lesson_time')
+
+    //thong ke khoa hoc
+    statistical = document.querySelector('#statistical')
+
+    idString = ''
+    listTimeEl.forEach(timeEl => {
+        idString = idString + timeEl.getAttribute('data-id') + ","
+    });
+    firstId = listTimeEl[0].getAttribute('data-id')
+    document.querySelector('iframe').setAttribute('src',`https://www.youtube.com/embed/${firstId}`)
+    console.log(idString)
+    fetch(`https://www.googleapis.com/youtube/v3/videos?id=${idString}&part=contentDetails&key=AIzaSyBFA1YrcVIeaagLGH_wSomRg0tkH8PWyvs`)
+        .then(data=> {return data.json()})
+        .then(data=>{
+            var regex = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+            var hours = 0, minutes = 0, seconds = 0,totalSeconds =0;
+            var totalHours = 0,totalMinutes = 0, totalTime
+            data.items.forEach((data,index)=>{
+                timeISO = data.contentDetails.duration
+                
+                if (regex.test(timeISO)) {
+                    var matches = regex.exec(timeISO);
+                    if (matches[1]) hours = Number(matches[1]);
+                    if (matches[2]) minutes = Number(matches[2]);
+                    if (matches[3]) seconds = Number(matches[3]);
+                    if(minutes == 0){
+                        time = `00:${seconds}`
+                    }else if(hours == 0){
+                        time = `${minutes}:${seconds}`
+                    }
+                    else{
+                        time = `${hours}:${minutes}:${seconds}`
+                    }
+                    listTimeEl[index].innerText = time
+                    totalSeconds = hours * 3600  + minutes * 60 + seconds + totalSeconds;
+                }
+                
+            })
+            //tinh tong thoi gian khoa hoc
+            totalHours = Math.floor(totalSeconds / 3600);
+            totalSeconds %= 3600;
+            totalMinutes = Math.floor(totalSeconds / 60);
+            totalTime = `Thời lượng ${totalHours} giờ ${totalMinutes} phút`
+            statistical.innerText = `${listTimeEl.length} Bài học . ${totalTime}`
+            console.log(totalHours)
+            console.log(totalMinutes)
+        })
+</script>
+{% endblock content %}

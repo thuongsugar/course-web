@@ -1,0 +1,273 @@
+.gird_colum-4 {
+    width: 33%;
+    padding: 20px;
+}
+.gird_colum-3{
+    width: 33.333%;
+}
+
+
+/* @media (max-width: 740px) {
+
+    .page__content h1{
+        text-align: center;
+        line-height: 3rem;
+    }
+} */
+.page__exam {
+    width: 100%;
+    height: 100%;
+}
+.page__exam-header {
+    padding-left: 20px;
+}
+.page__exam-header h1 {
+    font-size: 30px;
+}
+.page__exam-header h2 {
+    font-size: 14px;
+    font-weight: 300;
+}
+.page__exam-header h2 i {
+    color: red;
+}
+.page__exam-course {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.page__exam-course-item-img {
+    width: 100%;
+    height: 200px;
+
+}
+
+.page__exam-course-discrip {
+    height: 60px;
+}
+.page__exam-course-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px 0 rgba(131, 131, 131, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.page__exam-course-discrip {
+    height: 60px;
+}
+.page__exam-course-header {
+    font-size: 22px;
+    margin: 20px 0 20px 0;
+}
+.page__exam-course-discrip, 
+.page__exam-course-header {
+    padding: 0 10px 0 10px ;
+}
+.page__exam-course-footer {
+    display: flex;
+    text-align: center;
+    border: 1px solid;
+    border-color: #ccc transparent transparent transparent;
+    padding: 4px 0 10px 0;
+}
+.page__exam-time, .page__exam-lesson, .page__exam-quiz {
+    font-size: 12px;
+}
+.page__exam-time-text,.page__exam-lesson-text,.page__exam-quiz-text {
+    font-size: 15px;
+}
+.page__exam-course-discrip {
+    font-size: 14px;
+    width:100%;
+    white-space: pre-wrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+     display: -webkit-box;
+     line-height: 20px;
+}
+.page__exam-course-footer-quiz {
+    position: relative;
+    justify-content: end;
+}
+.page__exam-course-item-btn {
+    align-items: center;
+    height: 40px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.page__exam-course-item-btn:hover{
+    opacity: 0.9;
+    transform: translateY(-4px);
+    box-shadow: 0 2px 4px 0 rgba(131, 131, 131, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.2s linear;
+
+}
+.page__exam-select {
+    padding-right: 40px;
+    text-align: end;
+}
+.page__exam-select span {
+    font-size: 18px;
+    padding-right: 10px;
+}
+.page__exam-select-item {
+    width: auto;
+    height: 30px;
+    border: 1px solid rgb(245, 237, 237);
+    font-size: 18px;
+    /* color: var(--primary-color); */
+    background-color: rgb(243, 242, 242);
+    border-radius: 5px;
+    box-shadow: 2px 2px #ccc;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.page__exam-select-item option {
+    cursor: pointer;
+}
+.page__exam-select-item option :hover{
+    background: red;
+}
+
+.page__exam-select-item-scroll {
+      height: 40px;
+      overflow-y: auto;
+}
+  
+/*    */
+.sort-select {
+    float: right;
+    position: relative;
+    margin-bottom: 10px;
+}
+.sort-select .click-sort {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 6px 10px 6px 8px;
+}
+.sort-select .sort-show {
+    padding-right: 12px;
+    position: relative;
+}
+.sort-select .sort-show::before {
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #333;
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    width: 0;
+}
+.sort-select-main {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+    display: none;
+    position: absolute;
+    padding: 0 7px;
+    top: 30px;
+    right: 0;
+    width: 160px;
+    z-index: 2;
+}
+.sort-select-main p {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .savebtn {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Add a color to the cancel button */
+  .cancelbtn {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  /* Add a color to the delete button */
+  .savebtn {
+    background-color: #f44336;
+  }
+  
+  /* Add padding and center-align text to the container */
+  .container {
+    padding: 16px;
+    text-align: center;
+    position: relative;
+    left: 20%;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* Style the horizontal ruler */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+   
+  /* The Modal Close Button (x) */
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .clearfix button {
+    border: none;
+    color: var(--white-color);
+    cursor: pointer;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+  }

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="modal on"> 
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body">
+        <!-- Authen form log in -->
+
+        <div class="authen--form authen--form--login">
+            <form action="{% url 'course:login' %}?next={{next}}" method='POST'>
+                {% csrf_token %}
+                <div class="authen--form__content">
+                    <div class="authen--form__header">
+                        <h3 class="authen--form__header--sub"> Đăng nhập </h3>
+                    </div>
+                    <div class="authen--form__form">
+                        <div class="authen--form__form--infor">
+                            <!-- <input type="email" class="authen--form__form--login" required placeholder="Email của bạn"> -->
+                            {{form.username}}
+                        </div>
+                        <div class="authen--form__form--infor">
+                            <!-- <input type="password" class="authen--form__form--login" required placeholder="Nhập mật khẩu"> -->
+                            {{form.password}}
+                        </div>
+                        {% if form.non_field_errors %}
+                        <div class="authen--form__form--infor">
+                            <p class="error">Tên người dùng hoặc mật khẩu không hợp lệ. Vui lòng kiểm tra lại thông tin!!</p>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    <div class="authen--form__help">
+                        <a href="" class="authen--form__help authen--form__help--forgot"> Quên mật khẩu</a>
+
+                    </div>
+                    <div class="authen--form__control">
+                        <a href='/' class="btn btn--back js--back-login">TRỞ LẠI</a>
+                        <button type='submit' class="btn btn--primary">ĐĂNG NHẬP </button>
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </div>
+</div>
+<script>
+    input = document.querySelectorAll('.authen--form__form--infor input')
+    console.log(input);
+    input[0].setAttribute('placeholder','Tên người dùng...')
+    input[1].setAttribute('placeholder','Mật khẩu...')
+
+    const clickOutLogin = document.querySelector('.js--back-login')
+    clickOutLogin.addEventListener('click', outLogin)
+    function outLogin () {
+        modalLogin.classList.remove('on')
+    }
+
+</script>
+{% endblock content %}

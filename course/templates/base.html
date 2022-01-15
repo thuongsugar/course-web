@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'course/font/fontawesome-free-5.15.4-web/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'course/font/themify-icons-font (1)/themify-icons/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/exam.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/quiz.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/statistical.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <div class="side__bar-respon">
+        <div class="side__bar-respon-left">
+            <div class="side__bar-respon-user">
+                <img src="https://avatar-redirect.appspot.com/google/101918447405633767798?size=400" alt="" class="side__bar-respon-user-img">
+            </div>
+
+            <ul class="side__bar-respon-list">
+                <li class="side__bar-respon-item issidebar-repons-active">
+                    <a href="{% url 'course:index' %}" class="side__bar-respon-item-link">
+                        <i class="fas fa-home"></i>
+                        <span>Trang chủ</span>
+                    </a>
+                </li>
+                <li class="side__bar-respon-item">
+                    <a href="" class="side__bar-respon-item-link">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Học</span>
+                    </a>
+                </li>
+                <li class="side__bar-respon-item">
+                    <a href="#" class="side__bar-respon-item-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Giới thiệu</span>
+                    </a>
+                </li>
+                <li class="side__bar-respon-item isspacing">
+                    <a href="{% url 'course:logout' %}" class="side__bar-respon-item-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="root">
+        <div class="app__wrap">
+            <!-- Header -->
+            <div class="header__wrap">
+                <div class="header__icon-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="header__icon">
+                    <div class="header__icon-img">
+                        <img src="https://fullstack.edu.vn/assets/icon/f8_icon.png" alt="" class="header__icon-img-item">
+                    </div>
+                    <div class="header__icon-heading">
+                        <span class="header__icon-heading-text">Học lập trình để đi làm</span>
+                    </div>
+                    <div class="page__sidebar-add-box">
+                        <div class="page__sidebar-add-box-item">
+                            <i class="fas fa-pencil-alt"></i>
+                            <strong>Viết blog</strong>
+                        </div>
+                        <div class="page__sidebar-add-box-item">
+                            <i class="fas fa-question"></i>
+                            <strong>Đặt câu hỏi</strong>
+                        </div>
+                        <div class="page__sidebar-add-box-item">
+                            <i class="fas fa-code"></i>
+                            <strong>Chia sẻ code</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__search">
+                    <div class="header__search-wrap">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="header__search-input" placeholder="Tìm kiếm khóa học...">
+                    </div>
+                    <div class="header__search-result">
+                        <div class="result__content">
+                            <ul>
+                                
+                                {% comment %} <li>
+                                    <a href="">
+                                        <img src="http://localhost:8000/static/user/2021/12/file.png" alt="">
+                                        <span>hoc lap trinh</span>
+                                    </a>
+                                </li>  {% endcomment %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__information">
+                    <div class="header__information-wrap">
+                        <div class="header__information-search-icon-moblie">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <!-- Img dang nhap tai khoan -->
+                        {% if user.is_authenticated %}
+                            <div  class="header__information-img" >
+                                <img src="{% static user.avatar %}" alt="" class="header__information-img-item">
+                            </div>
+                        {% else %}
+                                <!-- Register and Login -->
+                            <div class="header__information-user">
+                                <div  class="header__information-user-register-link js_register" >
+                                    <a href="{% url 'course:register' %}" class="header__information-user-register ">Đăng ký</a>
+                                </div>
+                                <div  class="header__information-user-login-link js_login">
+                                    <a href="{% url 'course:login' %}" class="header__information-user-login">Đăng nhập</a>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                       
+                       
+
+                        <!-- User box -->
+                        <div class="header__information-user-box">
+                            <div class="header__information-user-box-header">
+                                <img src="{% static user.avatar %}" alt="" class="header__information-user-box-img">
+                                <div class="header__information-user-box-heading">
+                                    <h3 class="header__information-user-box-heading-text">{{user.username}}</h3>
+                                    <span class="header__information-user-box-heading-descript">{{user.email}}</span>
+                                </div>
+                            </div>
+                            <ul class="header__information-user-box-list">
+                                <li class="header__information-user-box-item-save">
+                                    <a href="{% url 'quiz:statistical' %}">Điểm của bạn</a>
+                                </li>
+                                <li class="header__information-user-box-item-setting">
+                                    <a href="{% url 'course:change_pass' %}">Đổi mật khẩu</a>
+                                </li>
+                                <li class="header__information-user-box-item-logout" style="padding-bottom: 0;">
+                                    <a href="{% url 'course:logout' %}">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header end -->
+
+            <div class="page__wrap">
+                <div class="page__sidebar">
+                    <ul class="page__sidebar-list">
+                        {% comment %} <li class="page__sidebar-add-item">
+                            <div class="page__sidebar-add-item-link">
+                                <i class="fas fa-plus page__sidebar-add-item-icon"></i>
+                            </div>
+                            
+                        </li> {% endcomment %}
+                        <li class="page__sidebar-item-handle page__sidebar-home-item {% if request.resolver_match.view_name in "'course:index','course:category_detail'" %}issidebar-active{% endif %}">
+                            <a href="{%url 'course:index'%}" class="page__sidebar-home-item-link">
+                                <div class="page__sidebar-home-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="page__sidebar-home-description">
+                                    <span class="page__sidebar-home-description-text">Trang chủ</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="page__sidebar-item-handle page__sidebar-lession-item {% if request.resolver_match.view_name in "'course:courses','course:course_register'" %}issidebar-active{% endif %}">
+                            <a href="{% url 'course:courses' %}" class="page__sidebar-course-item-link">
+                                <div class="page__sidebar-lession-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="page__sidebar-lession-description">
+                                    <span class="page__sidebar-lession-description-text">Học</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="page__sidebar-item-handle page__sidebar-code-item {% if request.resolver_match.view_name in "'quiz:index'" %}issidebar-active{% endif %}">
+                            <a href="{% url 'quiz:index' %}" class="page__sidebar-code-item-link">
+                                <div class="page__sidebar-code-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="page__sidebar-code-description">
+                                    <span class="page__sidebar-code-description-text">Thi</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page__content">
+                    <div class="page__content-wrap">
+                        <!-- Slider -->
+                        <div class="page__content-slider-cover">
+                            <div class="page__content-slider">
+                                <button class="page__content-slider-btn-prev">
+                                    <i class="fas fa-angle-left"></i>
+                                </button>
+                                <div class="page__content-slider-wrap">
+                                    <div class="page__content-slider-list">
+                                        
+                                    </div>
+                                </div>
+                                <button class="page__content-slider-btn-next">
+                                    <i class="fas fa-angle-right"></i>
+                                </button>
+                            </div>
+                            <ul class="page__content-slider-slickdot">
+                                <li class="slideractive"></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                            </ul>
+                        </div>
+                        <!-- Slider-end -->
+
+                        <!-- Courses -->
+                        <div class="page__content-home">
+                            {% block content %}{% endblock content %}
+                            <!-- Courses end -->
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+    </div>
+    {% block scripts %}{% endblock scripts %}
+    <script src="{% static 'course/js/app.js' %}"></script>
+    <script src="{% static 'course/js/find_course.js' %}"></script>
+
+
+</body>
+</html>

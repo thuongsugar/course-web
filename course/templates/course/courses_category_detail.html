@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% block content %}
+
+{% if user.is_authenticated %}
+        {% comment "" %}khoa hoc nguoi dung da dang ki{% endcomment %}
+        {% if course_registed %}
+
+            <div class="page__content-home-courses">
+                <div class="page__content-home-courses-header">
+                    <h1 class="page__content-home-courses-heading">Khóa da dang ki</h1>
+                </div>
+                <div class="page__content-home-courses-list">
+                    <div class="page__content-home-courses-list-cover">
+                        <div class="page__content-home-courses-list-wrap">
+                            {% for course in course_registed %}
+                                <div class="page__content-home-courses-item">
+                                    <div class="grid__column">
+                                        <a href="{% url 'course:learning' course.id %}" class="page__content-home-courses-link">
+                                            <img src="{% static course.image %}" alt="" class="page__content-home-courses-img">
+                                        </a>
+                                        <a href="" class="page__content-home-courses-description">
+                                            <h3 class="page__content-home-courses-description-text">{{course.subject}}</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% comment "" %}khoa hoc chua dang ki{% endcomment %}
+        {% if course_list %}
+            <div class="page__content-home-courses">
+                <div class="page__content-home-courses-header">
+                    <h1 class="page__content-home-courses-heading">Khóa chua hoc</h1>
+                </div>
+                <div class="page__content-home-courses-list">
+                    <div class="page__content-home-courses-list-cover">
+                        <div class="page__content-home-courses-list-wrap">
+                            {% for course in course_list %}
+                                <div class="page__content-home-courses-item">
+                                    <div class="grid__column">
+                                        <a href="{% url 'course:course_register' course.id %}" class="page__content-home-courses-link">
+                                            <img src="{% static course.image %}" alt="" class="page__content-home-courses-img">
+                                        </a>
+                                        <a href="" class="page__content-home-courses-description">
+                                            <h3 class="page__content-home-courses-description-text">{{course.subject}}</h3>
+                                        </a>
+                                    </div>
+
+                                    <div class="page__content-home-heading">
+                                        <strong>{{course.total}}</strong>
+                                        người khác cũng học
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="page__content-home-courses-header">
+                {% comment %} <h1 class="page__content-home-courses-heading">Khóa chua hoc</h1> {% endcomment %}
+                <h3 class="page__content-home-courses-heading">dang cap nhat </h3>
+                
+            </div>
+        {% endif %} 
+
+{% else %}
+        {% if course_list %}
+                <div class="page__content-home-courses">
+                    <div class="page__content-home-courses-header">
+                        <h1 class="page__content-home-courses-heading">Tất cả khóa học</h1>
+                    </div>
+                    <div class="page__content-home-courses-list">
+                        <div class="page__content-home-courses-list-cover">
+                            <div class="page__content-home-courses-list-wrap">
+                                {% for course in course_list %}
+                                    <div class="page__content-home-courses-item">
+                                        <div class="grid__column">
+                                            <a href="{% url 'course:course_register' course.id %}" class="page__content-home-courses-link">
+                                                <img src="{% static course.image %}" alt="" class="page__content-home-courses-img">
+                                            </a>
+                                            <a href="" class="page__content-home-courses-description">
+                                                <h3 class="page__content-home-courses-description-text">{{course.subject}}</h3>
+                                            </a>
+                                        </div>
+
+                                        <div class="page__content-home-heading">
+                                            <strong>{{course.total}}</strong>
+                                            người khác cũng học
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% else %}
+            <div class="page__content-home-courses-header">
+                <h1 class="page__content-home-courses-heading">Thật xin lỗi, chưa có khóa học nào</h1>
+            </div>
+        {% endif %} 
+
+{% endif %}
+{% endblock content %}

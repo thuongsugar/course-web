@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Thi{% endblock title %}
+
+{% block content %}
+<div class="page__exam">
+    <div class="box-wrap-exam">
+        <div class="page__exam-header">
+            <h1>Danh sách các khóa học</h1>
+            <h2>Học tập kết hợp với kiểm tra sẽ giúp bạn hiểu bài hơn 
+                <i class="fas fa-heart"></i>
+            </h2>
+        </div>
+        <div class="page__exam-select">
+            <span>Bài kiểm tra cho</span>
+            <select class="page__exam-select-item">
+                <option value = '' {% if param == None %}selected{% endif %}>Tất cả</option>
+                {% for course in course_registed %}
+                    <option value={{course.id}} {% if param == course.id  %}selected{% endif %} >
+                        {{course.subject}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    
+        <div class="page__exam-course ">
+            {% for quiz in quiz_list %}
+            <div class="gird_colum-4 ">
+                <div class="page__exam-course-item">
+                    <img class="page__exam-course-item-img" src="{% static quiz.course.image %}" alt="">
+                    <h1 class="page__exam-course-header">{{quiz.name}}</h2>
+                    <div class="page__exam-course-footer">
+                        <div class="page__exam-course-footer-time gird_colum-3">
+                            <h2 class="page__exam-time">Time</h2>
+                            <span class="page__exam-time-text"> 
+                                <span>{{quiz.time}}</span> phút
+                            </span>
+                        </div>
+                        <div class="page__exam-course-footer-lesson gird_colum-3">
+                            <h2 class="page__exam-lesson">Quiz</h2>
+                            <span class="page__exam-lesson-text">{{quiz.number_of_question}}</span>
+                        </div>
+                        <button data-id={{quiz.id}} data-name={{quiz.name}}  class="page__exam-course-item-btn gird_colum-3">
+                            Bắt đầu
+                        </button>
+                         
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+             
+        </div>
+    </div>
+    <div class="quiz">
+        <div class="time-quiz"></div>
+        <form action="" id="quiz_form" >
+            {% csrf_token %}
+            <div class="page__content__exam">
+                {% comment %} <h1>Tên khóa học </h1> {% endcomment %}
+                <div class="page__content__exam-item">
+                </div>
+            </div>
+            <button type="submit" class="quiz__form-btn" id="btn-save">Kết thúc</button>
+        </form>
+        <div id="id01" class="modal">
+            <form class="modal-content">
+              <div class="container">
+                <h1>Xác nhận nộp bài</h1>
+                <p>Hãy xem lại bài trước khi nộp</p>
+                <div class="clearfix">
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Hủy</button>
+                  <button type="button"  class="savebtn">Nộp bài</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="id012" class="modal">
+            <form class="modal-content">
+              <div class="container">
+                <h1>Bạn đang gian lận. Hãy trở lại</h1>
+                <div class="clearfix">
+                  <button type="button"  class="backbtn">Trở lại</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    
+</div>
+{% block scripts %}
+    <script src="{% static 'course/js/start_quiz.js'%}" defer></script>
+{% endblock scripts %}
+<script>
+    const slideEl =  document.querySelector('.page__content-slider-cover')
+    slideEl.setAttribute('style','display:none')
+    const selectEl = document.querySelector('select')
+    selectEl.onchange = e =>{
+        var courseId = e.target.value
+        if (courseId == ''){
+            window.location.href = window.location.origin + '/quiz'
+        } else{
+            window.location.href = window.location.origin + `/quiz?course_id=${e.target.value}`
+        }
+    }
+
+ </script>
+{% endblock content %}

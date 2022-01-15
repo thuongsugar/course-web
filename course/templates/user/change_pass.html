@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="modal on"> 
+    <div class="modal__overlay"></div>
+
+    <div class="modal__body">
+        <!-- Authen form log in -->
+
+        <div class="authen--form authen--form--login">
+            <form action="{% url 'course:change_pass' %}?next={{next}}" method='POST'>
+                {% csrf_token %}
+                <div class="authen--form__content">
+                    {% comment %} <div class="authen--form__header">
+                        <h3 class="authen--form__header--sub"> Đăng nhập </h3>
+                    </div> {% endcomment %}
+                    <div class="authen--form__form">
+                        <div class="authen--form__form--infor">
+                            {{form.old_password}}
+                            {% comment %} {{form.errors}} {% endcomment %}
+                            {% if form.errors.old_password %}
+                                    <span class="form-mess">{{form.errors.old_password}}</span>
+                            {% endif %}
+                        </div>
+                        <div class="authen--form__form--infor">
+                            {{form.new_password1}}
+                        </div>
+                        <div class="authen--form__form--infor">
+                            {{form.new_password2}}
+                            {% if form.errors.new_password2 %}
+                                    <span class="error">{{form.errors.new_password2}}</span>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                    <div class="authen--form__help">
+                        <a href="" class="authen--form__help authen--form__help--forgot"> Quên mật khẩu</a>
+
+                    </div>
+                    <div class="authen--form__control">
+                        <a href='/' class="btn btn--back js--back-login">TRỞ LẠI</a>
+                        <button type='submit' class="btn btn--primary">Thay đổi</button>
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </div>
+</div>
+<script>
+    input = document.querySelectorAll('.authen--form__form--infor input')
+    console.log(input);
+    input[0].setAttribute('placeholder','Mật khẩu cũ')
+    input[1].setAttribute('placeholder','Mật khẩu mới')
+    input[2].setAttribute('placeholder','Mật khẩu mới')
+
+    const clickOutLogin = document.querySelector('.js--back-login')
+    clickOutLogin.addEventListener('click', outLogin)
+    function outLogin () {
+        modalLogin.classList.remove('on')
+    }
+
+</script>
+{% endblock content %}

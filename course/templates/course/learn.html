@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript cơ bản</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'course/font/fontawesome-free-5.15.4-web/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'course/font/themify-icons-font (1)/themify-icons/themify-icons.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'course/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'course/css/learn.css' %}">
+</head>
+<body>
+    <div id="notice">
+       
+    </div>
+    <div class="page__js-course">
+        <div class="page__js-course-wrap">
+            <div class="page__js-course-header">
+                <div class="page__js-course-header-left">
+                    <a href="" class="page__js-course-header-left-back">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                    <a href="./index.html" class="page__js-course-header-left-icon">
+                        <img src="https://fullstack.edu.vn/assets/images/f8_text_logo.png" alt="" class="page__js-course-header-left-icon-link">
+                    </a>
+                    <div class="page__js-course-header-left-name">
+                        <h3 class="page__js-course-header-left-name-text">{{lessons.0.course}}</h3>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="page__js-course-app">
+                <div class="page__js-course-app-video">
+                    <div class="page__js-course-app-video-content-wrap">
+                        <div class="page__js-course-app-video-content">
+                            <iframe width="560" height="100" src="https://www.youtube.com/embed/{{lessons.0.link.get_id_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="page__js-course-app-video-description">
+                        {% comment %} <div class="page__js-course-app-video-description-header">
+                            <span class="page__js-course-app-video-header-item-content description-tab">Nội dung</span>
+                            <span class="page__js-course-app-video-header-item-about description-tab isclick">Nội dung bài học</span>
+                        </div> {% endcomment %}
+
+                        <div class="page__js-course-app-list-respon description-pane">
+                            <div class="page__js-course-app-list-header">
+                                <div class="page__js-course-app-list-heading">
+                                    <span class="page__js-course-app-list-heading-text">{{lessons.0.course}}</span>
+                                    <!-- <button class="page__js-course-app-list-hidden-btn" style="position:relative">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button> -->
+                                </div>
+
+                            </div>
+                            <div class="page__js-course-app-list-content">
+                                <div class="page__js-course-app-list-wrap-respon">
+                                    <div class="page__js-course-app-list-item-wrap">
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page__js-course-app-video-description-wrap-content description-pane isopen-description">
+                            <!-- Miêu tả khóa học -->
+    
+                            {% comment %} <div class="page__js-course-app-video-description-header">
+                                <span>Khóa học: </span>
+                                <h1>HTML, CSS từ Zero đến Hero</h1>
+                            </div> {% endcomment %}
+    
+                            <div class="page__js-course-app-video-comment-app">
+                                <div class="page__js-course-app-video-comment-app-wrap">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="page__js-course-app-video-display-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Nội dung học</span>
+                    </div>
+                </div>
+                <div class="page__js-course-app-list">
+                    <div class="page__js-course-app-list-header">
+                        <div class="page__js-course-app-list-heading">
+                            <span class="page__js-course-app-list-heading-text">{{lessons.0.course}}</span>
+                            <button class="page__js-course-app-list-hidden-btn" style="position:relative">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="page__js-course-app-list-content">
+                        <div class="page__js-course-app-list-wrap">
+                            {% for lesson in lessons %}
+                                <div class="page__js-course-app-list-content-item" >
+                                    <div class="page__js-course-app-list-content-item-link">
+                                        <span class="page__js-course-app-list-content-item-text">{{lesson.subject}}</span>
+                                        <span class="page__js-course-app-list-content-item-time">
+                                            <i class="${item.icon}"></i>
+                                            <span  data-id={{lesson.get_id_url}}>04:20</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                                    
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'course/js/learn.js' %}"></script>
+    <script>
+        listTimeEl = document.querySelectorAll('.page__js-course-app-list-content-item-time span')
+        listLesson = document.querySelectorAll('.page__js-course-app-list-content-item')
+        iframeEl = document.querySelector('iframe')
+        pageBack = document.querySelector('.page__js-course-header-left-back')
+        pageBack.setAttribute('href',`${document.referrer}`)
+
+        idString = ''
+        listTimeEl.forEach(timeEl => {
+            idString = idString + timeEl.getAttribute('data-id') + ","
+        });
+        firstId = listTimeEl[0].getAttribute('data-id')
+        document.querySelector('iframe').setAttribute('src',`https://www.youtube.com/embed/${firstId}`)
+        
+        console.log(idString)
+        fetch(`https://www.googleapis.com/youtube/v3/videos?id=${idString}&part=contentDetails&key=AIzaSyBFA1YrcVIeaagLGH_wSomRg0tkH8PWyvs`)
+            .then(data=> {return data.json()})
+            .then(data=>{
+                var regex = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+                var hours = 0, minutes = 0, seconds = 0,totalSeconds =0;
+                var totalHours = 0,totalMinutes = 0, totalTime
+                data.items.forEach((data,index)=>{
+                    timeISO = data.contentDetails.duration
+                    
+                    if (regex.test(timeISO)) {
+                        var matches = regex.exec(timeISO);
+                        if (matches[1]) hours = Number(matches[1]);
+                        if (matches[2]) minutes = Number(matches[2]);
+                        if (matches[3]) seconds = Number(matches[3]);
+                        if(minutes == 0){
+                            time = `00:${seconds}`
+                        }else if(hours == 0){
+                            time = `${minutes}:${seconds}`
+                        }
+                        else{
+                            time = `${hours}:${minutes}:${seconds}`
+                        }
+                        listTimeEl[index].innerText = time
+                        totalSeconds = hours * 3600  + minutes * 60 + seconds + totalSeconds;
+                    }
+                    
+                })
+                //tinh tong thoi gian khoa hoc
+                /*totalHours = Math.floor(totalSeconds / 3600);
+                totalSeconds %= 3600;
+                totalMinutes = Math.floor(totalSeconds / 60);
+                totalTime = `Thời lượng ${totalHours} giờ ${totalMinutes} phút`
+                statistical.innerText = `${listTimeEl.length} Bài học . ${totalTime}`
+                console.log(totalHours)
+                console.log(totalMinutes)*/
+            })
+        //active item click
+        listLesson[0].classList.add('course-item-active')
+        listLesson.forEach(lesson => {
+            lesson.onclick = (e)=>{
+                listLesson.forEach(l =>{
+                    l.classList.remove('course-item-active')
+                })
+                lesson.classList.add('course-item-active')
+                id = lesson.querySelector('.page__js-course-app-list-content-item-time span').getAttribute('data-id')
+                iframeEl.setAttribute('src',`https://www.youtube.com/embed/${id}`)
+                console.log(id)
+            }
+        });
+    </script>
+</body>
+</html>

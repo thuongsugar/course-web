@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Trang chủ
+{% endblock title %}
+{% block content %}
+    {% if category_list %}
+    <div class="page__content-home-heading">
+        <strong>{{total_user}}</strong>
+        người khác cũng học
+    </div>
+    <div class="page__content-home-courses">
+        <div class="page__content-home-courses-header">
+            <h1 class="page__content-home-courses-heading">Danh mục khóa học</h1>
+        </div>
+        <div class="page__content-home-courses-list">
+            <div class="page__content-home-courses-list-cover">
+                <div class="page__content-home-courses-list-wrap">
+                    {% for category in category_list %}
+                        <div class="page__content-home-courses-item">
+                            <div class="grid__column">
+                                <a href="{% url 'course:category_detail' category.id %}" class="page__content-home-courses-link">
+                                    <img src="{% static category.image %}" alt="" class="page__content-home-courses-img">
+                                </a>
+                                <a href="" class="page__content-home-courses-description">
+                                    <h3 class="page__content-home-courses-description-text">{{category.name}}</h3>
+                                </a>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}
