@@ -24,9 +24,10 @@ html {
 
 
 .grid__column {
-    margin-right: 24px;
+    margin-right: 9px;
+    margin-left: 9px;
     width: 325px;
-    /* margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
 
 .grid__column-3 {

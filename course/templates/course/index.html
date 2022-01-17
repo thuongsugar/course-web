@@ -22,12 +22,12 @@ Trang chủ
                                 <a href="{% url 'course:category_detail' category.id %}" class="page__content-home-courses-link">
                                     <img src="{% static category.image %}" alt="" class="page__content-home-courses-img">
                                 </a>
-                                <a href="" class="page__content-home-courses-description">
+                                <a href="{% url 'course:category_detail' category.id %}" class="page__content-home-courses-description">
                                     <h3 class="page__content-home-courses-description-text">{{category.name}}</h3>
                                 </a>
                             </div>
                         </div>
-                        <hr>
+                        <!-- <hr> -->
                     {% endfor %}
                 </div>
             </div>

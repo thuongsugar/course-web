@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from pickle import TRUE
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,8 +26,8 @@ SECRET_KEY = 'django-insecure-p-jyul!k_b^$gqd*mg^6c9ws&(_%r__s8sj0t)o5rsdvyp_o2d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
+# EMAIL_BACKEND = 
 
 # Application definition
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'course',
     'quiz',
     'results',
+    'helpers',
     'ckeditor',
     'ckeditor_uploader'
 

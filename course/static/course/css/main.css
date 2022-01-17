@@ -1244,7 +1244,11 @@ html::-webkit-scrollbar {
     margin-left: 20px;
 }
 .gird_colum-7 {
-    /* width: 66.66667%; */
+    width: 66.66667%;
+}
+.content__description__time {
+    display: inline-block;
+    text-align: center;
 }
 .content__description__time-video-img {
     width: 380px;
@@ -1299,10 +1303,8 @@ html::-webkit-scrollbar {
     transition: 0.3s ease;
 }
 .content__description__time-register  {
-    justify-content: center;
-    display: flex;
-    padding-top: 20px;
-    
+    display: block;
+    margin-top: 20px;
 }
 /* end fong */
 

@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 20px;
+    height: 30px;
+    background-color: aqua;
+}

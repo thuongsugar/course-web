@@ -21,3 +21,5 @@ urlpatterns = [
     path('', include('course.urls')),
     path('', include('quiz.urls')),
 ]
+
+handler404 = 'helpers.views.handle_not_found'
