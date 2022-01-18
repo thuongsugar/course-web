@@ -467,11 +467,10 @@ html::-webkit-scrollbar {
     font-weight: 500;
 }
 
-.header__information-user-box-header span {
-    margin: 0;
-    margin-bottom: 4px;
-    font-size: 1.5rem;
-    font-weight: 300;
+.header__information-user-box-header div {
+    width: 127px;
+    word-wrap: break-word;
+    font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.6);
 }
 
