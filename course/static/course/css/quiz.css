@@ -5,6 +5,7 @@
 .gird_colum-2 {
     width: 50%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 0 10px 0 10px ;
 }
@@ -22,6 +23,10 @@
     margin-right: 100px;
     font-size: 18px;
     position: fixed;
+}
+.quiz .time-quiz b{
+    background-color: var(--primary-color);
+    padding: 5px 10px;
 }
 .quiz__form-btn{
     position: relative;
@@ -84,7 +89,9 @@
 .page__content-quiz-answer li {
     border-style: solid;
     border-color: transparent;
-    padding: 10px;
+    /* padding: 10px; */
+    line-height: 40px;
+    height: 40px;
     font-size: 20px;
     margin-top: 10px;
     border-radius: 10px;

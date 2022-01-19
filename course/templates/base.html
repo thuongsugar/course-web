@@ -62,11 +62,11 @@
                 </div>
                 <div class="header__icon">
                     <div class="header__icon-img">
-                        <img src="https://fullstack.edu.vn/assets/icon/f8_icon.png" alt="" class="header__icon-img-item">
+                        <img src="{% static 'iconn.png' %}" alt="" class="header__icon-img-item">
                     </div>
-                    <div class="header__icon-heading">
+                    <!-- <div class="header__icon-heading">
                         <span class="header__icon-heading-text">Học lập trình để đi làm</span>
-                    </div>
+                    </div> -->
                     <div class="page__sidebar-add-box">
                         <div class="page__sidebar-add-box-item">
                             <i class="fas fa-pencil-alt"></i>
@@ -111,22 +111,7 @@
                             <div  class="header__information-img" >
                                 <img src="{% static user.avatar %}" alt="" class="header__information-img-item">
                             </div>
-                        {% else %}
-                                <!-- Register and Login -->
-                            <div class="header__information-user">
-                                <div  class="header__information-user-register-link js_register" >
-                                    <a href="{% url 'course:register' %}" class="header__information-user-register ">Đăng ký</a>
-                                </div>
-                                <div  class="header__information-user-login-link js_login">
-                                    <a href="{% url 'course:login' %}" class="header__information-user-login">Đăng nhập</a>
-                                </div>
-                            </div>
-
-                        {% endif %}
-                       
-                       
-
-                        <!-- User box -->
+                             <!-- User box -->
                         <div class="header__information-user-box">
                             <div class="header__information-user-box-header">
                                 <img src="{% static user.avatar %}" alt="" class="header__information-user-box-img">
@@ -147,6 +132,22 @@
                                 </li>
                             </ul>
                         </div>
+                        {% else %}
+                                <!-- Register and Login -->
+                            <div class="header__information-user">
+                                <div  class="header__information-user-register-link js_register" >
+                                    <a href="{% url 'course:register' %}" class="header__information-user-register ">Đăng ký</a>
+                                </div>
+                                <div  class="header__information-user-login-link js_login">
+                                    <a href="{% url 'course:login' %}" class="header__information-user-login">Đăng nhập</a>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                       
+                       
+
+                       
 
                     </div>
                 </div>
@@ -200,17 +201,11 @@
                         <!-- Slider -->
                         <div class="page__content-slider-cover">
                             <div class="page__content-slider">
-                                <button class="page__content-slider-btn-prev">
-                                    <i class="fas fa-angle-left"></i>
-                                </button>
                                 <div class="page__content-slider-wrap">
                                     <div class="page__content-slider-list">
                                         
                                     </div>
                                 </div>
-                                <button class="page__content-slider-btn-next">
-                                    <i class="fas fa-angle-right"></i>
-                                </button>
                             </div>
                             <ul class="page__content-slider-slickdot">
                                 <li class="slideractive"></li>

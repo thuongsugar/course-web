@@ -37,7 +37,11 @@ function getQuestion(idCourse) {
                     answer.forEach(a => {
                         ans += `<li>
                                     <input type="radio" value="${a}" class="ans" id="${question}-${a}" name="${question}">
-                                    <label for="${question}-${a}">${a}</label>
+                                    <label for="${question}-${a}" style="line-height: 40px;
+                                    padding: 10px;
+                                    cursor: inherit;
+                                    "
+                                    >${a}</label>
                             </li>`
                     })
                     quizBox.innerHTML += `

@@ -77,9 +77,10 @@ class QuizSave(View):
         rusult = []
         data = json.loads(request.body) 
         cheat = data.pop('cheat')
-        print(cheat)
-
+        print(data)
         for k in data.keys():
+            print(k)
+            print(quiz.pk)
             q = Question.objects.get(content=k,quiz = quiz.pk)
             questions.append(q)
         for q in questions:
