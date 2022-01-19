@@ -34,6 +34,7 @@ class CategoryDetailView(ListView):
     def get_context_data(self, **kwargs):
         current_user = self.request.user
         context = super().get_context_data(**kwargs)
+        context['category'] = Category.objects.get(pk=self.kwargs.get('pk'))
         course_list = context['course_list']
         if current_user.id == None:
             course_list = course_list.filter().values().annotate(total=Count('user_register')).order_by('-total')

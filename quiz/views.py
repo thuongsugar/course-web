@@ -80,7 +80,7 @@ class QuizSave(View):
         print(cheat)
 
         for k in data.keys():
-            q = Question.objects.get(content=k)
+            q = Question.objects.get(content=k,quiz = quiz.pk)
             questions.append(q)
         for q in questions:
             answer_selected = data.get(q.content)
@@ -94,7 +94,7 @@ class QuizSave(View):
                     if ans.correct:
                         answer_correct = ans.content
             rusult.append({str(q.content):{'answer_correct':answer_correct,'answered':answer_selected}})
-        score_ = 10 / quiz.number_of_question * score
+        score_ = round(10 / quiz.number_of_question * score,2)
         Result.objects.create(user=user,quiz=quiz,score=score_,cheat=cheat)
         # return render(request=request,template_name='quiz/quiz_result.html',context={'score':score_,'result':rusult})
         return JsonResponse({'score':score_,'result':rusult})

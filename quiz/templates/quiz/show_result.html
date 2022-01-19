@@ -19,7 +19,7 @@ Thống Kê
             <td>{{r.create_date}}</td>
             <td>{{r.cheat}}</td>
             <td>
-                <a href="{% url 'quiz:index' %}?course_id={{r.quiz.id}}">Làm lại</a>
+                <a href="{% url 'quiz:index' %}?course_id={{r.quiz.course.id}}">Làm lại</a>
             </td>
         </tr>
     {% endfor %}

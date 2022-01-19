@@ -34,6 +34,10 @@ Học
                     </div>
                 </div>
             </div>
+        {% else %}
+            <div class="page__content-home-courses-header">
+                <h1 class="page__content-home-courses-heading">Bạn chưa có khóa học nào</h1>
+            </div>
         {% endif %}
 
 {% else %}
@@ -52,12 +56,13 @@ Học
                                                 <img src="{% static course.image %}" alt="" class="page__content-home-courses-img">
                                                 <h3 class="page__content-home-courses-description">{{course.subject}}</h3>
                                             </a>
+                                            <div class="page__content-home-heading">
+                                                <strong>{{course.total}}</strong>
+                                                người khác cũng học
+                                            </div>
                                         </div>
 
-                                        <div class="page__content-home-heading">
-                                            <strong>{{course.total}}</strong>
-                                            người khác cũng học
-                                        </div>
+                                       
                                     </div>
                                     <hr>
                                 {% endfor %}

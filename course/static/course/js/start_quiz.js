@@ -1,5 +1,5 @@
 var examWrap = document.querySelector('.box-wrap-exam')
-var url = window.location.href
+var url = window.location.origin
 var btnStartQuiz = document.querySelectorAll('.page__exam-course-item-btn')
 var quizBox = document.querySelector('.page__content__exam-item')
 var quizBoxParent = document.querySelector('.quiz')
@@ -21,7 +21,7 @@ btnStartQuiz.forEach(button => {
 })
 function getQuestion(idCourse) {
     // quizBoxParent.innerHTML = ''
-    var apiQuestion =url + `/${idCourse}`
+    var apiQuestion =url + `/quiz/${idCourse}`
     var data
     console.log(apiQuestion);
     fetch(apiQuestion)
@@ -36,8 +36,8 @@ function getQuestion(idCourse) {
                     var ans='';
                     answer.forEach(a => {
                         ans += `<li>
-                                    <input type="radio" value="${a}" class="ans" id="${a}" name="${question}">
-                                    <label for="${a}">${a}</label>
+                                    <input type="radio" value="${a}" class="ans" id="${question}-${a}" name="${question}">
+                                    <label for="${question}-${a}">${a}</label>
                             </li>`
                     })
                     quizBox.innerHTML += `
@@ -82,7 +82,7 @@ function sendData() {
         }
     })
     console.log(data);
-    fetch(url + `/${idCourse}/save`,
+    fetch(url + `/quiz/${idCourse}/save`,
         {   
             method: 'POST',
             headers: {
