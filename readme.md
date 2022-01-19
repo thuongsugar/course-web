@@ -44,6 +44,8 @@ mặc định trang web chạy ở địa chỉ [http://localhost:8000/](http://
 
 Truy cập [http://localhost:8000/admin](http://localhost:8000/admin) và đăng nhập bằng tài khoản vừa tạo để thêm dữ liệu cho trang web.
 
+Để sử dụng chức năng hỗ trợ quên mật khẩu thì bạn hãy mở file **setting.py** tìm **EMAIL_HOST_USER** điền địa chỉ email của bạn, **EMAIL_HOST_PASSWORD** điền mật khẩu email, hãy truy cập [vào đây](http://localhost:8000/admin) bằng địa chỉ email bạn vừa điền trên kia rồi **bật** nó lên là sử dụng được
+
 Bảng **Catygorys:** thông tin các danh mục khóa học
 
 Bảng **Courses:** thông tin các khóa học tương ứng với mỗi danh mục trên
